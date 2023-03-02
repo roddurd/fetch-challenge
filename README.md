@@ -9,7 +9,9 @@ You can run `wsl --update` in Command Prompt to ensure it's installed and up-to-
 
 ## Usage
 After cloning this repository, open up a terminal in the `fetch-challenge/` directory.
+
 Run `docker build -t fetch .`.
+
 Then run `docker run -p 5000:5000 fetch`.
 
 The API is now exposed on `http://localhost:5000/`.
