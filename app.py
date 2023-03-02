@@ -17,12 +17,12 @@ def process_receipt():
     points = sum(c.isalnum() for c in retailer)
 
     # 50 points if the total is a round dollar amount with no cents.
-    total = receipt_data['total']
-    if float(total) == round(float(total)):
+    total = float(receipt_data['total'])
+    if total == round(total):
         points += 50
 
     # 25 points if the total is a multiple of 0.25.
-    if float(total) % 0.25 == 0:
+    if total % 0.25 == 0:
         points += 25
 
     # 5 points for every two items on the receipt.
@@ -36,7 +36,8 @@ def process_receipt():
             points += ceil(float(item['price']) * 0.2)
 
     # 6 points if the day in the purchase date is odd.
-    if int(receipt_data['purchaseDate'].split('-')[2]) % 2 == 1:
+    day = int(receipt_data['purchaseDate'].split('-')[2])
+    if day % 2 == 1:
         points += 6
 
     # 10 points if the time of purchase is after 2:00pm and before 4:00pm.
